@@ -18,11 +18,15 @@ export default function useOrder(){
         const newItem : orderItem = {...item, quantity: 1}
         setOrder([...order, newItem])
     }
-    console.log(order)
 }
+
+    const removeItem = (itemId: number) => {
+        setOrder(order.filter(item => item.id !== itemId))
+    }
 
     return{
         order,
-        addItem
+        addItem,
+        removeItem
     }
 }
