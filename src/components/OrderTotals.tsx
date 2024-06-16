@@ -6,9 +6,10 @@ import { formatCurrency } from "../helpers";
 type OrderTotalProps = {
     order: orderItem[];
     tip : number;
+    placeOrder: () => void;
 };
 
-export default function OrderContents({ order, tip }: OrderTotalProps) {
+export default function OrderContents({ order, tip, placeOrder }: OrderTotalProps) {
 
     const subtotalAmount = useMemo(() => {
         return order.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -38,7 +39,13 @@ export default function OrderContents({ order, tip }: OrderTotalProps) {
                 
             </div>
 
-            <button></button>
+            <button
+            className="w-full bg-black p-3 uppercase text-white font-bold mt-10 disabled:opacity-10"
+            disabled={order.length === 0}
+            onClick={placeOrder}
+            >
+                Guardar Orden
+            </button>
         </>
     );
 }
