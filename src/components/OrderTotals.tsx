@@ -5,6 +5,7 @@ import { formatCurrency } from "../helpers";
 
 type OrderTotalProps = {
     order: orderItem[];
+    tip : number;
 };
 
 export default function OrderContents({ order }: OrderTotalProps) {
